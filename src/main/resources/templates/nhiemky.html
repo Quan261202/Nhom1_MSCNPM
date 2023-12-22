@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<head>
+    <title>Quản lý PBC</title>
+    <meta charset="utf-8">
+    <link type = "text/css" href="styles/main.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Dancing Script' rel='stylesheet'>
+    <link type = "text/css" href="styles/manager.css" rel="stylesheet" />
+    <script type="text/javascript" src="javascript/manager.js"></script>"
+</head>
+<body>
+    <header>
+        <div class = "homepage">
+            <img class = "homepage" id="homeIcon" src = "Assets/flower.png">
+            <a>GROUP 1</a>
+        </div>
+        <div class = "notice">
+            <i class="fa fa-bell"></i>
+            <a>Thông báo</a>
+        </div>
+        <div class = "account">
+            <img src="Assets/coffe.png">
+            <a>Tài khoản</a>
+        </div>
+    </header>
+    <div class = "menu">
+        <ul>
+            <li><i class="fa fa-home"></i><a href = "homepage">Trang chủ</a></li>
+            <li><i class="fa fa-search"></i><a href = "searching">Tìm kiếm</a></li> 
+            <li><i class="fa fa-server"></i><a href = "quanly">Quản lý phiếu</a></li>
+            <li><i class="fa fa-info"></i><a href = "gioithieu">Giới thiệu</a></li>
+            <li><i class="fa fa-book"></i><a href = "huongdan">Hướng dẫn</a></li>         
+        </ul>
+    </div>
+    <content>
+        <a>Các Nhiệm Kỳ - <a id="donviX"></a></a>
+        <!--Hàm giao diện thêm đơn vị-->
+        <button class="add-button" onclick="openForm()">Thêm nhiệm kỳ</button>
+        <div class="form-popup" id="addForm">
+            <form action="#" class="form-container">
+              <h1>Thêm nhiệm kỳ</h1>
+          
+              <label for="MaNK"><b>Mã nhiệm kỳ</b></label>
+              <input type="text" placeholder="Nvarchar" name="MaNK" required>
+              <label for="TenNK"><b>Tên nhiệm kỳ</b></label>
+              <input type="text" placeholder="Nvarchar" name="TenNK" class="TenNK" required>
+              <button type="submit" class="btn" onclick="ThemDV()">Thêm</button>
+              <button type="button" class="btn cancel" onclick="closeForm()">Huỷ</button>
+            </form>
+          </div>
+            <!--Hàm giao diện thêm nhiệm kỳ-->
+            
+            <!--Hàm giao diện thêm phiếu-->
+    </content>
+</body>

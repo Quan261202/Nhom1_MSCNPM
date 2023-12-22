@@ -1,0 +1,29 @@
+<!-- src/main/resources/templates/thanhpho/form.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Danh Sách Thanh Pho</title>
+    <meta charset="utf-8">
+</head>
+<body>
+    <h2>Danh Sách Thanh Pho</h2> 
+    
+    <!-- Hiển thị danh sách -->
+    <ul>
+        <li th:each="thanhPho : ${thanhPhos}">
+            <span th:text="${thanhPho.maThanhPho} + ' - ' + ${thanhPho.tenThanhPho}"></span>
+        </li>
+    </ul>
+    
+    <!-- Form thêm mới thành phố -->
+    <form th:action="@{/thanhPho/form}" th:object="${newThanhPho}" method="post">
+        <label>Mã Thanh Pho:</label>
+        <input type="text" th:field="*{maThanhPho}" />
+        <br/>
+        <label>Tên Thanh Pho:</label>
+        <input type="text" th:field="*{tenThanhPho}" />
+        <br/>
+        <button type="submit">Thêm mới</button>
+    </form>
+</body>
+</html>
