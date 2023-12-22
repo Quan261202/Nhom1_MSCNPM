@@ -43,17 +43,15 @@
         <!--Hàm giao diện thêm đơn vị-->
         <button class="add-button" onclick="openForm()">Thêm đơn vị</button>
          <div class="form-popup" id="addForm">
-            <form  class="form-container" method="post" th:action="@{/thanhPho/add}" th:object="${thanhPho}">
+            <form  class="form-container" method="post" th:action="@{/add-thanh-pho}" th:object="${thanhPho}">
               <h1>Them don vi</h1>
               <label for="MaDV"><b>Ma DV</b></label>
-              <input type="text" placeholder="Nvarchar" name="MaDV" required >
+              <input type="text" th:field="*{maThanhPho}" placeholder="Nvarchar" id="MaDV" name="MaDV" required >
               <label for="TenDV"><b>Ten Don Vi</b></label>
-              <input type="text"   placeholder="Nvarchar" name="TenDV" id="nameDV" class="TenDV"    required >
+              <input type="text" th:field="*{tenThanhPho}" id="TenDV" placeholder="Nvarchar" name="TenDV" class="TenDV" required >
               <button type="submit" class="btn" onclick="addDV()">Thêm</button>
               <button type="button" class="btn cancel" onclick="closeForm()">Huỷ</button>
             </form>
-            
-
           </div> 
     </content>
 </body>
