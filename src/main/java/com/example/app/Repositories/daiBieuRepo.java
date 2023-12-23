@@ -6,4 +6,4 @@ import com.example.app.Models.daiBieu;
 
 public interface daiBieuRepo extends CrudRepository<daiBieu, String> {
     
-} 
+}

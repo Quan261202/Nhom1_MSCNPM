@@ -2,7 +2,6 @@ package com.example.app.Models;
 
 
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 
 import jakarta.persistence.Id;
@@ -10,8 +9,6 @@ import jakarta.persistence.Id;
 public class thanhPho {
     @Id
     private String maThanhPho;
-
-    @Column
     private String tenThanhPho;
     public thanhPho() {
     }

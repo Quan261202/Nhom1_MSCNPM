@@ -46,6 +46,11 @@ public class WebController {
       return "thanhpho/form";
     }
 
+    @GetMapping("/chart")
+    public String chart(){
+      return "chart";
+    }
+
     @PostMapping("/add-thanh-pho")
     public String addThanhPho(@ModelAttribute thanhPho thanhPho) {
         System.out.println(thanhPho.getTenThanhPho());
