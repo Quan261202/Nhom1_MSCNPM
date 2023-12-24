@@ -31,6 +31,17 @@
         </ul>
     </div>
     <content>
-        <a>content here</a>
+        <button onclick="redirectToPhieuList()">Danh sách Phiếu</button>
+        <button onclick="redirectToCreatePhieu()">Tạo mới Phiếu</button>
     </content>
+
+    <script>
+        function redirectToPhieuList() {
+            window.location.href = "phieus/list";
+        }
+
+        function redirectToCreatePhieu() {
+            window.location.href = "phieus/create";
+        }
+    </script>
 </body>

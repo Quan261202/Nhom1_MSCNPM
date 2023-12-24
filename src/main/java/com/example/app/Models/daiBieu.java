@@ -1,15 +1,12 @@
 package com.example.app.Models;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+
 import jakarta.persistence.Id;
 
 @Entity
 public class daiBieu {
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    
+    @Id  
     private String maDaiBieu;
     private String tenDaiBieu;
     private int tongPhieu ;

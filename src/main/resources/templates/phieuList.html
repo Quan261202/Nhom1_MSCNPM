@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách Phiếu</title>
+</head>
+<body>
+
+<h1>Danh sách Phiếu</h1>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Mã Phiếu</th>
+            <th>Mã Đại Biểu</th>
+            <th>Mã Nhiệm Kỳ</th>
+            <th>Mã Thành Phố</th>
+            <!-- Thêm các cột thông tin khác của Phiếu -->
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="phieu : ${phieus}">
+            <td th:text="${phieu.maPhieu}"></td>
+            <td th:text="${phieu.maDaiBieu}"></td>
+            <td th:text="${phieu.maNhiemKy}"></td>
+            <td th:text="${phieu.maThanhPho}"></td>
+            <!-- Thêm các cột thông tin khác của Phiếu -->
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
