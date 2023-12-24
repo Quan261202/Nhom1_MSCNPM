@@ -1,7 +1,13 @@
 package com.example.app.controllers;
 
+
 import com.example.app.Models.thanhPho;
+import com.example.app.Services.PhieuService;
+
 import com.example.app.Services.thanhPhoService;
+
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +21,8 @@ public class WebController {
 
     @Autowired
     thanhPhoService tpsv;
+    @Autowired
+    PhieuService phieuService;
 
    @GetMapping("/homepage")
      public String Homepage() {
@@ -37,10 +45,6 @@ public class WebController {
      public String Help(){
         return "huongdan";
      }
-   @GetMapping("/nhiemky")
-    public String Nhiemky() {
-        return "nhiemky";
-    }
     @GetMapping("/form")
     public String Form(){
       return "thanhpho/form";
@@ -56,6 +60,6 @@ public class WebController {
         System.out.println(thanhPho.getTenThanhPho());
         System.out.println(thanhPho.getMaThanhPho());
         tpsv.create(thanhPho);
-        return "homepage";
+        return "quanly";
     }
 }

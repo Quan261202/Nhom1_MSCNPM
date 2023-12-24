@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tạo mới Phiếu</title>
+</head>
+<body>
+
+<h1>Tạo mới Phiếu</h1>
+
+<form th:action="@{/phieus/create}" th:object="${phieu}" method="post">
+    <label>Mã Phiếu: <input type="text" th:field="*{maPhieu}" /></label><br/>
+    <label>Mã Đại Biểu: <input type="text" th:field="*{maDaiBieu}" /></label><br/>
+    <label>Mã Nhiệm Kỳ: <input type="text" th:field="*{maNhiemKy}" /></label><br/>
+    <label>Mã Thành Phố: <input type="text" th:field="*{maThanhPho}" /></label><br/>
+    <!-- Thêm các trường thông tin khác của Phiếu -->
+    <input type="submit" value="Tạo mới"/>
+</form>
+
+</body>
+</html>
+    

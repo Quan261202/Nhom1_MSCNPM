@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Hướng dẫn</title>
     <meta charset="utf-8">
@@ -32,6 +33,11 @@
         </ul>
     </div>
     <content>
-        <a>content here</a>
+        <li>
+            <form th:action="@{/nhiemky/list}" method="get">
+                <button type="submit">Danh Sách Nhiệm Kỳ</button>
+            </form>
+        </li>
     </content>
 </body>
+</html>
