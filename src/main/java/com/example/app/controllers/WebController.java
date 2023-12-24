@@ -1,6 +1,7 @@
 package com.example.app.controllers;
 
 
+import com.example.app.Models.nhiemKy;
 import com.example.app.Models.thanhPho;
 import com.example.app.Services.PhieuService;
 
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 
@@ -39,6 +41,7 @@ public class WebController {
    @GetMapping("/quanly")
      public String Manager(Model model){
         model.addAttribute("thanhPho", new thanhPho());
+        model.addAttribute("thanhPhos", tpsv.getAlltThanhPhos());
         return "quanly";
      }
    @GetMapping("/huongdan")
@@ -56,10 +59,29 @@ public class WebController {
     }
 
     @PostMapping("/add-thanh-pho")
-    public String addThanhPho(@ModelAttribute thanhPho thanhPho) {
-        System.out.println(thanhPho.getTenThanhPho());
-        System.out.println(thanhPho.getMaThanhPho());
-        tpsv.create(thanhPho);
+    public String addThanhPho(@ModelAttribute thanhPho tp) {
+        System.out.println(tp);
+        tpsv.create(tp);
+        return "redirect:/quanly";
+    }
+
+    @PostMapping("/thanhPho/edit/{id}")
+    public String updateBook(@PathVariable String id, @ModelAttribute thanhPho thanhPho) {
+        thanhPho existingBook = tpsv.findByMaThanhPho(id);
+        existingBook.setTenThanhPho(thanhPho.getTenThanhPho());
         return "quanly";
+    }
+
+    @GetMapping("/thanhPho/delete/{id}")
+    public String deleteBook(@PathVariable String id) {
+        tpsv.remove(id);
+        return "redirect:/quanly";
+    }
+
+    @GetMapping("/thanhPho/{maThanhPho}/nhiemKy")
+    public String getAllNhiemKyByMaDonVi(@PathVariable String maThanhPho, Model model){
+        model.addAttribute("nhiemKy", new nhiemKy());
+        model.addAttribute("nhiemKys", tpsv.findByMaThanhPho(maThanhPho).getNhiemKys());
+        return "nhiemky-list";
     }
 }

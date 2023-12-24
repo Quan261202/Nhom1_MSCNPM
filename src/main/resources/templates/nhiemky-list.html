@@ -1,42 +1,66 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="https://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>List of Terms</title>
+    <title>Quản lý PBC</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link type = "text/css" href="styles/main.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Dancing Script' rel='stylesheet'>
+    <link type = "text/css" href="styles/manager.css" rel="stylesheet" />
+    <link type = "text/css" href="../static/styles/donvi.css" rel="stylesheet" />
+    <script type="text/javascript" src="javascript/manager.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 <body>
-    <style>
-        /* CSS for grid view */
-        ul {
-            list-style: none;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        li {
-            border: 1px solid #ccc;
-            padding: 10px;
-        }
-    </style>
-<h1>List of Terms</h1>
-
-<!-- Link to the home page -->
-<a th:href="@{/}">Home</a>
-
-<!-- List of Terms -->
-<ul>
-    <li th:each="nhiemKy : ${nhiemKys}">
-        <a th:href="@{/nhiemky/phieus/{maNhiemKy}(maNhiemKy=${nhiemKy.maNhiemKy})}">
-            <span th:text="${nhiemKy.maNhiemKy}"></span> - <span th:text="${nhiemKy.ttNhiemKy}"></span>
-        </a>
-        <!-- Add more properties as needed -->
-    </li>
-</ul>
-
-<!-- Link to the form for creating a new Term -->
-<a th:href="@{/nhiemky/create}">Create a New Term</a>
-
+<header>
+    <div class = "homepage">
+        <img class = "homepage" id="homeIcon" src = "Assets/flower.png">
+        <a>GROUP 1</a>
+    </div>
+    <div class = "notice">
+        <i class="fa fa-bell"></i>
+        <a>Thông báo</a>
+    </div>
+    <div class = "account">
+        <img src="Assets/coffe.png">
+        <a>Tài khoản</a>
+    </div>
+</header>
+<div class = "menu">
+    <ul>
+        <li><i class="fa fa-home"></i><a href = "homepage">Trang chủ</a></li>
+        <li><i class="fa fa-search"></i><a href = "searching">Tìm kiếm</a></li>
+        <li><i class="fa fa-server"></i><a href = "quanly">Quản lý phiếu</a></li>
+        <li><i class="fa fa-info"></i><a href = "gioithieu">Giới thiệu</a></li>
+        <li><i class="fa fa-book"></i><a href = "huongdan">Hướng dẫn</a></li>
+    </ul>
+</div>
+<content>
+    <a>Các Đơn Vị</a>
+    <form class = "donvi" action = "" method="GET">
+        <div style="width: 100%" id="newdv1">
+            <div style=" padding: 100px 200px;display: flex;align-items: center;justify-content: space-evenly;flex-wrap: wrap;gap: 100px;" class="donvis">
+                <div th:each="nhiemKy : ${nhiemKys}" style="display: flex;align-items: center;justify-content: center;flex: 1 0 calc(25% - 10px);max-width: calc(33.333% - 10px);padding: 0 20px;background-color: aqua;border-radius: 20px">
+                    <p>
+                        <a style="color: black; font-size: 30px; margin: 0 0;text-decoration: none;" th:text="${nhiemKy.ttNhiemKy}"></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!--Hàm giao diện thêm đơn vị-->
+    <button class="add-button" onclick="openForm()">Thêm đơn vị</button>
+    <div class="form-popup" id="addForm">
+        <form class="form-container" method="post" th:action="@{/thanhpho/{maThanhPho}/add-nhiem-ky}" th:object="${nhiemKy}">
+            <h1>Thêm Nhiệm Kỳ</h1>
+            <label for="MaDV"><b>Mã nhệm kỳ</b></label>
+            <input type="text" th:field="*{maNhiemKy}" placeholder="Nvarchar" id="MaDV" name="MaDV" required>
+            <label for="TenDV"><b>Tên nhiệm kỳ</b></label>
+            <input type="text" th:field="*{ttNhiemKy}" placeholder="Nvarchar" id="TenDV" name="TenDV" required>
+            <button type="submit" class="btn">Thêm</button>
+            <button type="button" class="btn cancel" onclick="closeForm()">Huỷ</button>
+        </form>
+    </div>
+</content>
 </body>
 </html>

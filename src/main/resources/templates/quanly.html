@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href='https://fonts.googleapis.com/css?family=Dancing Script' rel='stylesheet'>
     <link type = "text/css" href="styles/manager.css" rel="stylesheet" />
+    <link type = "text/css" href="../static/styles/donvi.css" rel="stylesheet" />
     <script type="text/javascript" src="javascript/manager.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
@@ -38,20 +39,48 @@
     <content>
         <a>Các Đơn Vị</a>
         <form class = "donvi" action = "" method="GET">           
-            <div id="newdv1"></div>
+            <div style="width: 100%" id="newdv1">
+                <div style=" padding: 100px 200px;display: flex;align-items: center;justify-content: space-evenly;flex-wrap: wrap;gap: 100px;" class="donvis">
+                    <div th:each="thanhPho : ${thanhPhos}" style="display: flex;align-items: center;justify-content: center;flex: 1 0 calc(25% - 10px);max-width: calc(33.333% - 10px);padding: 0 20px;background-color: aqua;border-radius: 20px">
+                        <p>
+                            <a style="color: black; font-size: 30px; margin: 0 0;text-decoration: none;" th:text="${thanhPho.tenThanhPho}" th:href="@{/thanhPho/{maThanhPho}/nhiemKy(maThanhPho=${thanhPho.maThanhPho})}"></a>
+                        </p>
+                    </div>
+                </div>
+<!--                <table border="1">-->
+<!--                    <thead>-->
+<!--                    <tr>-->
+<!--                        <th>Mã đơn vị</th>-->
+<!--                        <th>Tên đơn vị</th>-->
+<!--                        <th>Thao tác</th>-->
+<!--                    </tr>-->
+<!--                    </thead>-->
+<!--                    <tbody>-->
+<!--                    <tr th:each="thanhPho : ${thanhPhos}">-->
+<!--                        <td>-->
+<!--                            <a th:text="${thanhPho.maThanhPho}" th:href="@{/thanhPho/{maThanhPho}/nhiemKy(maThanhPho=${thanhPho.maThanhPho})}"></a>-->
+<!--                        </td>-->
+<!--                        <td>-->
+<!--                            <a th:href="@{/thanhPho/edit/{id}(id=${thanhPho.maThanhPho})}">Edit</a>-->
+<!--                            <a th:href="@{/thanhPho/delete/{id}(id=${thanhPho.maThanhPho})}">Delete</a>-->
+<!--                        </td>-->
+<!--                    </tr>-->
+<!--                    </tbody>-->
+<!--                </table>-->
+            </div>
         </form>
         <!--Hàm giao diện thêm đơn vị-->
         <button class="add-button" onclick="openForm()">Thêm đơn vị</button>
          <div class="form-popup" id="addForm">
-            <form  class="form-container" method="post" th:action="@{/add-thanh-pho}" th:object="${thanhPho}">
-              <h1>Them don vi</h1>
-              <label for="MaDV"><b>Ma DV</b></label>
-              <input type="text" th:field="*{maThanhPho}" placeholder="Nvarchar" id="MaDV" name="MaDV" required >
-              <label for="TenDV"><b>Ten Don Vi</b></label>
-              <input type="text" th:field="*{tenThanhPho}" id="TenDV" placeholder="Nvarchar" name="TenDV" class="TenDV" required >
-              <button type="submit" class="btn" onclick="addDV()">Thêm</button>
-              <button type="button" class="btn cancel" onclick="closeForm()">Huỷ</button>
-            </form>
+             <form class="form-container" method="post" th:action="@{/add-thanh-pho}" th:object="${thanhPho}">
+                 <h1>Them Don Vi</h1>
+                 <label for="MaDV"><b>Ma DV</b></label>
+                 <input type="text" th:field="*{maThanhPho}" placeholder="Nvarchar" id="MaDV" name="MaDV" required>
+                 <label for="TenDV"><b>Ten Don Vi</b></label>
+                 <input type="text" th:field="*{tenThanhPho}" placeholder="Nvarchar" id="TenDV" name="TenDV" required>
+                 <button type="submit" class="btn">Thêm</button>
+                 <button type="button" class="btn cancel" onclick="closeForm()">Huỷ</button>
+             </form>
           </div> 
     </content>
 </body>

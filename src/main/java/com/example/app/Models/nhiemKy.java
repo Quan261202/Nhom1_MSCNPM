@@ -2,12 +2,18 @@ package com.example.app.Models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class nhiemKy {
     @Id
     private String maNhiemKy; // Primary key
     private String ttNhiemKy; // Column for ttNhiemKy
+
+    @ManyToOne
+    @JoinColumn(name = "maThanhPho")
+    private thanhPho thanhPho;
 
     // Default constructor (required by JPA)
     public nhiemKy() {

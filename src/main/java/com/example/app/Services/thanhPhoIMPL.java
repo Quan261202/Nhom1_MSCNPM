@@ -1,6 +1,7 @@
 package com.example.app.Services;
 
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,5 +24,15 @@ public class thanhPhoIMPL implements thanhPhoService {
     @Override
     public  List<thanhPho> getAlltThanhPhos(){
         return (List<thanhPho>) tp.findAll();
-    };
+    }
+
+    @Override
+    public thanhPho findByMaThanhPho(String id) {
+        return tp.findById(id).orElse(null);
+    }
+
+    @Override
+    public void remove(String id) {
+        tp.deleteById(id);
+    }
 }
